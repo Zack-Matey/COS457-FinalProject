@@ -1,0 +1,243 @@
+CREATE TABLE Wing(
+    wing_id NUMERIC(2) PRIMARY KEY,
+    wing_name VARCHAR(50),
+    wing_description VARCHAR(300)
+);
+
+CREATE TABLE Security_Level(
+    security_level_id NUMERIC(3) PRIMARY KEY,
+    security_level_name VARCHAR(50),
+    security_level_description VARCHAR(300)
+);
+
+CREATE TABLE Item_Category(
+    category_id NUMERIC(4) PRIMARY KEY,
+    category_name VARCHAR(50),
+    description VARCHAR(300)
+);
+
+CREATE TABLE Item_Material(
+    material_id NUMERIC(6) PRIMARY KEY,
+    description VARCHAR(50)
+);
+
+CREATE TABLE Item_Artist(
+    artist_id NUMERIC(6) PRIMARY KEY,
+    first_name VARCHAR(30),
+    middle_name VARCHAR(30),
+    last_name VARCHAR(30),
+    birthdate DATE
+);
+
+CREATE TABLE Item_Location(
+    location_id NUMERIC(6) PRIMARY KEY,
+    floor NUMERIC(1),
+    wing_id NUMERIC(2),
+    CONSTRAINT item_location_wing
+        FOREIGN KEY (wing_id)
+        REFERENCES wing(wing_id)
+);
+
+CREATE TABLE Collection_Item(
+    item_id NUMERIC(6) PRIMARY KEY,
+    item_location_id NUMERIC(6) UNIQUE NOT NULL,
+    item_name VARCHAR(50),
+    created DATE,
+    security_level_id NUMERIC(3) NOT NULL,
+    temperature_min NUMERIC(4),
+    temperature_max NUMERIC(4),
+    description VARCHAR(200),
+    CONSTRAINT collection_item_security_level_id
+        FOREIGN KEY (security_level_id)
+        REFERENCES security_level(security_level_id),
+    CONSTRAINT collection_item_item_location
+        FOREIGN KEY (item_location_id)
+        REFERENCES item_location(location_id)
+);
+
+CREATE TABLE Item_Material_Collection_Item(
+    material_id NUMERIC(6),
+    item_id NUMERIC(6),
+    CONSTRAINT item_material_collection_item_artist
+        FOREIGN KEY (material_id)
+        REFERENCES item_material(material_id),
+    CONSTRAINT item_material_collection_item_item
+        FOREIGN KEY (item_id)
+        REFERENCES collection_item(item_id)
+);
+
+CREATE TABLE Item_Category_Collection_Item(
+    category_id NUMERIC(6),
+    item_id NUMERIC(6),
+    CONSTRAINT item_category_collection_item_artist
+        FOREIGN KEY (category_id)
+        REFERENCES item_category(category_id),
+    CONSTRAINT item_category_collection_item_item
+        FOREIGN KEY (item_id)
+        REFERENCES collection_item(item_id)
+);
+
+CREATE TABLE Item_Artist_Collection_Item(
+    artist_id NUMERIC(6),
+    item_id NUMERIC(6),
+    CONSTRAINT item_artist_collection_item_artist
+        FOREIGN KEY (artist_id)
+        REFERENCES item_artist(artist_id),
+    CONSTRAINT item_artist_collection_item_item
+        FOREIGN KEY (item_id)
+        REFERENCES collection_item(item_id)
+);
+
+CREATE TABLE Ticket(
+    ticket_id NUMERIC(2) PRIMARY KEY,
+    ticket_name VARCHAR(50),
+    ticket_description VARCHAR(300),
+    ticket_price NUMERIC(4)
+);
+
+CREATE TABLE Staff_Role(
+    staff_role_id NUMERIC(2) PRIMARY KEY,
+    staff_role_name VARCHAR(50),
+    staff_role_description VARCHAR(300)
+);
+
+CREATE TABLE Gender(
+    gender_id NUMERIC(2) PRIMARY KEY,
+    gender VARCHAR(20)
+);
+
+CREATE TABLE Staff(
+    staff_id NUMERIC(6) PRIMARY KEY,
+    first_name VARCHAR(30),
+    middle_name VARCHAR(30),
+    last_name VARCHAR(30),
+    email VARCHAR(100),
+    birthdate DATE,
+    gender NUMERIC(2),
+    CONSTRAINT staff_gender
+        FOREIGN KEY (gender)
+        REFERENCES gender(gender_id)
+);
+
+CREATE TABLE Staff_Phone(
+    staff_id NUMERIC(6),
+    staff_phone VARCHAR(50),
+    CONSTRAINT staff_phone_staff
+        FOREIGN KEY (staff_id)
+        REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Staff_Address(
+    staff_id NUMERIC(6),
+    street_num NUMERIC(10),
+    street_name VARCHAR(100),
+    town_name VARCHAR(100),
+    zipcode VARCHAR(10),
+    state_province VARCHAR(100),
+    country VARCHAR(100),
+    CONSTRAINT staff_address_staff
+        FOREIGN KEY (staff_id)
+        REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Staff_Security_Level(
+    staff_id NUMERIC (6),
+    security_level_id NUMERIC(3),
+    CONSTRAINT staff_security_level_staff
+        FOREIGN KEY (staff_id)
+        REFERENCES staff(staff_id),
+    CONSTRAINT staff_security_level_security_level
+        FOREIGN KEY (security_level_id)
+        REFERENCES security_level(security_level_id)
+);
+
+CREATE TABLE Staff_Staff_Role(
+    staff_id NUMERIC (6),
+    staff_role_id NUMERIC(2),
+    CONSTRAINT staff_staff_role_staff
+        FOREIGN KEY (staff_id)
+        REFERENCES staff(staff_id),
+    CONSTRAINT staff_staff_role_staff_role
+        FOREIGN KEY (staff_role_id)
+        REFERENCES staff_role(staff_role_id)
+);
+
+CREATE TABLE Visitor(
+    visitor_id NUMERIC(10) PRIMARY KEY,
+    first_name VARCHAR(30),
+    middle_name VARCHAR(30),
+    last_name VARCHAR(30),
+    email VARCHAR(100),
+    phone VARCHAR(30)
+);
+
+CREATE TABLE Item(
+    item_id NUMERIC(8) PRIMARY KEY,
+    item_name VARCHAR(50),
+    price NUMERIC(6),
+    stock NUMERIC(6),
+    description VARCHAR(300),
+    weight NUMERIC(6)
+);
+
+CREATE TABLE Sale(
+    sale_id NUMERIC(10) PRIMARY KEY,
+    visitor_id NUMERIC(10),
+    checkout_staff_id NUMERIC(6),
+    total VARCHAR(8), 
+        FOREIGN KEY (visitor_id)
+        REFERENCES visitor(visitor_id),
+    CONSTRAINT sale_staff
+        FOREIGN KEY (checkout_staff_id)
+        REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Sale_Item(
+    sale_id NUMERIC(10),
+    item_id NUMERIC(8),
+    CONSTRAINT sale_item_sale
+        FOREIGN KEY (sale_id)
+        REFERENCES sale(sale_id),
+    CONSTRAINT sale_item_item
+        FOREIGN KEY (item_id)
+        REFERENCES item(item_id)
+);
+
+CREATE TABLE Visit(
+    visit_id NUMERIC(10) PRIMARY KEY,
+    visitor_id NUMERIC(10),
+    ticket_id NUMERIC(2),
+    checkin_staff_id NUMERIC(6),
+    entry_time TIMESTAMP,
+    exit_time TIMESTAMP,
+    CONSTRAINT visit_visitor
+        FOREIGN KEY (visitor_id)
+        REFERENCES visitor(visitor_id),
+    CONSTRAINT visit_ticket
+        FOREIGN KEY (ticket_id)
+        REFERENCES ticket(ticket_id),
+    CONSTRAINT visit_checkin_staff
+        FOREIGN KEY (checkin_staff_id)
+        REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Collection_Item_Movement_Log(
+    log_id NUMERIC(10) PRIMARY KEY,
+    log_time TIMESTAMP,
+    collection_item_id NUMERIC(6),
+    staff_id NUMERIC(6),
+    prev_location_id NUMERIC(6),
+    new_location_id NUMERIC(6),
+    CONSTRAINT collection_item_movement_log_collection_item
+        FOREIGN KEY (collection_item_id)
+        REFERENCES collection_item(item_id),
+    CONSTRAINT collection_item_movement_log_staff
+        FOREIGN KEY (staff_id)
+        REFERENCES staff(staff_id),
+    CONSTRAINT collection_item_movement_log_prev_location
+        FOREIGN KEY (prev_location_id)
+        REFERENCES item_location(location_id),
+    CONSTRAINT collection_item_movement_log_new_location
+        FOREIGN KEY (new_location_id)
+        REFERENCES item_location(location_id)
+);

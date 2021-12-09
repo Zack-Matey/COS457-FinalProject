@@ -1,0 +1,240 @@
+INSERT INTO wing VALUES (01, 'Richelieu', 'The Richelieu wing is the north wing of the Louvre');
+INSERT INTO wing VALUES (02, 'Sully', 'The Sully wing is the east wing of the Louvre');
+INSERT INTO wing VALUES (03, 'Denon', 'The Denon wing is the south wing of the Louvre');
+
+INSERT INTO security_level VALUES (01, 'Very Low Security', 'Lowest level of security clearance.');
+INSERT INTO security_level VALUES (02, 'Low Security', 'Second lowest level of security.');
+INSERT INTO security_level VALUES (03, 'Medium Security', 'Medium security.');
+INSERT INTO security_level VALUES (04, 'High Security', 'High security.');
+INSERT INTO security_level VALUES (05, 'Very High Security', 'High level of security.');
+
+INSERT INTO item_category VALUES (01, 'Mesopotamian', null);
+INSERT INTO item_category VALUES (02, 'Egyptian', null);
+INSERT INTO item_category VALUES (03, 'Indus Valley Civilization', null);
+INSERT INTO item_category VALUES (04, 'Chinese', null);
+INSERT INTO item_category VALUES (05, 'Greek', null);
+INSERT INTO item_category VALUES (06, 'Roman', null);
+INSERT INTO item_category VALUES (07, 'Pre-Islamic Arabia', null);
+INSERT INTO item_category VALUES (08, 'Islamic', null);
+INSERT INTO item_category VALUES (09, 'Aztec', null);
+INSERT INTO item_category VALUES (10, 'Mayan', null);
+INSERT INTO item_category VALUES (11, 'Colombian', null);
+INSERT INTO item_category VALUES (12, 'Andean regions', null);
+INSERT INTO item_category VALUES (13, 'Indian', null);
+INSERT INTO item_category VALUES (14, 'Japanese', null);
+INSERT INTO item_category VALUES (15, 'South-east Asian', null);
+INSERT INTO item_category VALUES (16, 'Sub-Saharan Africa', null);
+INSERT INTO item_category VALUES (17, 'Oceania', null);
+INSERT INTO item_category VALUES (18, 'Germanic', null);
+INSERT INTO item_category VALUES (19, 'Anglo-Saxon', null);
+INSERT INTO item_category VALUES (20, 'Byzantine', null);
+INSERT INTO item_category VALUES (21, 'Romanesque', null);
+INSERT INTO item_category VALUES (22, 'Gothic', null);
+INSERT INTO item_category VALUES (23, 'Renaissance', null);
+INSERT INTO item_category VALUES (24, 'Baroque', null);
+INSERT INTO item_category VALUES (25, 'Rococo', null);
+INSERT INTO item_category VALUES (26, 'Neoclassicism', null);
+INSERT INTO item_category VALUES (27, 'Romanticism', null);
+INSERT INTO item_category VALUES (28, 'Realism', null);
+INSERT INTO item_category VALUES (29, 'Impressionism', null);
+INSERT INTO item_category VALUES (30, 'Symbolism', null);
+INSERT INTO item_category VALUES (31, 'Post-Impressionism', null);
+INSERT INTO item_category VALUES (32, 'Art Nouveau', null);
+INSERT INTO item_category VALUES (33, 'Fauvism', null);
+INSERT INTO item_category VALUES (34, 'Expressionism', null);
+INSERT INTO item_category VALUES (35, 'Cubism', null);
+INSERT INTO item_category VALUES (36, 'Surrealism', null);
+INSERT INTO item_category VALUES (37, 'Mid and late 20th century', null);
+INSERT INTO item_category VALUES (38, 'Modern', null);
+
+INSERT INTO item_material VALUES (01, 'Marble');
+INSERT INTO item_material VALUES (02, 'Oil paint');
+INSERT INTO item_material VALUES (03, 'Watercolor paint');
+INSERT INTO item_material VALUES (04, 'Wood');
+INSERT INTO item_material VALUES (05, 'Canvas');
+INSERT INTO item_material VALUES (06, 'Granite');
+INSERT INTO item_material VALUES (07, 'Jade');
+INSERT INTO item_material VALUES (08, 'Silver');
+INSERT INTO item_material VALUES (09, 'Gold');
+INSERT INTO item_material VALUES (10, 'Papyrus');
+
+INSERT INTO item_artist VALUES (01, 'Leonardo', null, 'da Vinci', DATE '1452-01-01');
+INSERT INTO item_artist VALUES (02, 'Michelangelo', null, 'Buonarotti', DATE '1475-01-01');
+INSERT INTO item_artist VALUES (03, 'Rembrandt', 'Harmenszoon', 'van Rijn', DATE '1606-01-01');
+INSERT INTO item_artist VALUES (04, 'Pablo', null, 'Picasso', DATE '1881-01-01');
+INSERT INTO item_artist VALUES (05, 'Claude', null, 'Monet', DATE '1840-01-01');
+INSERT INTO item_artist VALUES (06, 'Vincent', null, 'van Gogh', DATE '1853-01-01');
+
+INSERT INTO item_location VALUES (01, 1, 01);
+INSERT INTO item_location VALUES (02, 1, 02);
+INSERT INTO item_location VALUES (03, 1, 03);
+INSERT INTO item_location VALUES (04, 2, 01);
+INSERT INTO item_location VALUES (05, 2, 01);
+INSERT INTO item_location VALUES (06, 2, 01);
+INSERT INTO item_location VALUES (07, 1, 03);
+
+INSERT INTO collection_item VALUES (01, 02, 'Mona Lisa', DATE '1506-01-01', 05, 10, 30, 'Half-Length portrait painting');
+INSERT INTO collection_item VALUES (02, 03, 'Virgin of the Rocks', DATE '1483-01-01', 04, 10, 30, 'Paris version of The Virgin of the Rocks');
+INSERT INTO collection_item VALUES (03, 07, 'David', DATE '1503-01-01', 03, 0, 40, 'David is a 5.17-metre marble statue of the Biblical figure David, a favoured subject in the art of Florence'); 
+--wikipedia https://en.wikipedia.org/wiki/David_(Michelangelo)
+INSERT INTO collection_item VALUES (04, 05, 'Nike of Samothrace', null, 03, 0, 40, 'The Winged Victory of Samothrace, or the Nike of Samothrace,[2] is a votive monument originally found on the island of Samothrace'); 
+--wikipedia https://en.wikipedia.org/wiki/Winged_Victory_of_Samothrace
+INSERT INTO collection_item VALUES (05, 06, 'Venus de Milo', null, 03, 10, 30, 'The Venus de Milo is an ancient Greek sculpture from the Hellenistic period, depicting a Greek goddess');  
+--wikipedia https://en.wikipedia.org/wiki/Venus_de_Milo
+
+INSERT INTO item_material_collection_item VALUES (02, 01);
+INSERT INTO item_material_collection_item VALUES (05, 01);
+INSERT INTO item_material_collection_item VALUES (02, 02);
+INSERT INTO item_material_collection_item VALUES (05, 02);
+INSERT INTO item_material_collection_item VALUES (01, 03);
+INSERT INTO item_material_collection_item VALUES (01, 04);
+INSERT INTO item_material_collection_item VALUES (01, 05);
+
+INSERT INTO item_category_collection_item VALUES (23, 01);
+INSERT INTO item_category_collection_item VALUES (23, 02);
+INSERT INTO item_category_collection_item VALUES (23, 03);
+INSERT INTO item_category_collection_item VALUES (23, 04);
+INSERT INTO item_category_collection_item VALUES (23, 05);
+
+INSERT INTO item_artist_collection_item VALUES (01, 01);
+INSERT INTO item_artist_collection_item VALUES (01, 02);
+INSERT INTO item_artist_collection_item VALUES (02, 03);
+
+INSERT INTO ticket VALUES (01, 'Standard', 'Standard full access', 25);
+INSERT INTO ticket VALUES (02, 'Deluxe', 'Deluxe access', 45);
+INSERT INTO ticket VALUES (03, 'Premium', 'Premium access', 95);
+
+INSERT INTO staff_role VALUES (01, 'Archivist', 'Directly responsible for collections');
+INSERT INTO staff_role VALUES (02, 'Conservator', 'Preservation of historical items');
+INSERT INTO staff_role VALUES (03, 'Curator', 'Oversees specific collections');
+INSERT INTO staff_role VALUES (04, 'Director', 'Museum Director');
+INSERT INTO staff_role VALUES (05, 'Historian', 'Resident historian');
+INSERT INTO staff_role VALUES (06, 'Graphic Design', 'Resident Graphic Designer');
+INSERT INTO staff_role VALUES (07, 'Security Officer', 'Provides security');
+INSERT INTO staff_role VALUES (08, 'Store employee', 'Works at gift shop');
+
+INSERT INTO gender VALUES (01, 'Male');
+INSERT INTO gender VALUES (02, 'Female');
+INSERT INTO gender VALUES (03, 'Other');
+
+INSERT INTO staff VALUES (01, 'Wolfgang', 'Darell', 'Kumar', 'wolfgang.darell@zacksmuseum.com', DATE '2003-05-15', 01);
+INSERT INTO staff VALUES (02, 'Janne', 'Giuseppe', 'O Cuirc', 'janne.g.ocuirc@zacksmuseum.com', DATE '1982-09-24', 01);
+INSERT INTO staff VALUES (03, 'Henry', 'Ivano', 'Tumicelli', 'henry.tumicelli@zacksmuseum.com', DATE '1995-01-26', 01);
+INSERT INTO staff VALUES (04, 'Hosee', 'Miloslav', 'Hoedemaekers', 'hosee.hoedemaekers@zacksmuseum.com', DATE '1975-12-12', 01);
+INSERT INTO staff VALUES (05, 'Gerold', 'Muhammad', 'Rose', 'gerold.m.rose@zacksmuseum.com', DATE '1999-04-02', 01);
+INSERT INTO staff VALUES (06, 'Nokomis', 'Amirah', 'Pinheiro', 'nokomis.pinheiro@zacksmuseum.com', DATE '1984-05-12', 02);
+INSERT INTO staff VALUES (07, 'Christen', 'Aliyah', 'Christians', 'christen.christians@zacksmuseum.com', DATE '1998-02-24', 02);
+INSERT INTO staff VALUES (08, 'Mia', 'Euphrasia', 'O Corra', 'mia.e.ocorra@zacksmuseum.com', DATE '2000-01-26', 02);
+INSERT INTO staff VALUES (09, 'Salome', 'Sita', 'Burton', 'salome.burton@zacksmuseum.com', DATE '1983-09-23', 02);
+INSERT INTO staff VALUES (10, 'Mirjam', 'Marica', 'Hughes', 'mirjam.hughes@zacksmuseum.com', DATE '1992-07-19', 02);
+
+INSERT INTO staff_phone VALUES (01, '15933201518');
+INSERT INTO staff_phone VALUES (01, '14188592494');
+INSERT INTO staff_phone VALUES (01, '12056841121');
+INSERT INTO staff_phone VALUES (02, '17597656412');
+INSERT INTO staff_phone VALUES (02, '14952751129');
+INSERT INTO staff_phone VALUES (03, '18705230556');
+INSERT INTO staff_phone VALUES (03, '13319816228');
+INSERT INTO staff_phone VALUES (03, '14835837528');
+INSERT INTO staff_phone VALUES (04, '15325591791');
+INSERT INTO staff_phone VALUES (04, '15772496350');
+INSERT INTO staff_phone VALUES (04, '14374981735');
+INSERT INTO staff_phone VALUES (04, '13814799241');
+INSERT INTO staff_phone VALUES (05, '19282882947');
+INSERT INTO staff_phone VALUES (05, '18768949416');
+INSERT INTO staff_phone VALUES (05, '17899644294');
+INSERT INTO staff_phone VALUES (06, '18688629074');
+INSERT INTO staff_phone VALUES (06, '14803139271');
+INSERT INTO staff_phone VALUES (07, '18827925125');
+INSERT INTO staff_phone VALUES (07, '17975269358');
+INSERT INTO staff_phone VALUES (08, '15487062128');
+INSERT INTO staff_phone VALUES (08, '14577341882');
+INSERT INTO staff_phone VALUES (09, '14198954793');
+INSERT INTO staff_phone VALUES (09, '15857455606');
+INSERT INTO staff_phone VALUES (09, '18475314850');
+INSERT INTO staff_phone VALUES (10, '16848442325');
+INSERT INTO staff_phone VALUES (10, '16185145816');
+
+INSERT INTO staff_address VALUES (01, 102, 'Clopper Rd', 'Gaithersburg', 45040, 'Maryland', 'United States of America');
+INSERT INTO staff_address VALUES (02, 125, 'Kentucky Way', 'Mount Laurel', 12562, 'Oregon', 'United States of America');
+INSERT INTO staff_address VALUES (03, 274, 'Ridgeway Rd', 'Siler City', 16327, 'Indiana', 'United States of America');
+INSERT INTO staff_address VALUES (04, 3657, 'Quailwood Ct', 'Clinton', 16272, 'California', 'United States of America');
+INSERT INTO staff_address VALUES (04, 9, 'W 7th Ave', 'Rockwall', 19492, 'Indiana', 'United States of America');
+INSERT INTO staff_address VALUES (05, 2, 'Brendenwood Rd', 'Chincoteague Island', 93244, 'Minnesota', 'United States of America');
+INSERT INTO staff_address VALUES (06, 34, 'Taylors Rd', 'Battleboro', 73593, 'Pennsylvania', 'United States of America');
+INSERT INTO staff_address VALUES (07, 32, 'Stone Hill', 'Denham Springs', 83493, 'Maine', 'United States of America');
+INSERT INTO staff_address VALUES (08, 7468, 'Cypress St', 'Emeryville', 38063, 'Maryland', 'United States of America');
+INSERT INTO staff_address VALUES (09, 2, 'Sweetbriar St', 'Cedar Lake', 85377, 'Maine', 'United States of America');
+INSERT INTO staff_address VALUES (09, 95, 'Mccarter Way', 'Indialantic', 56328, 'Kansas', 'United States of America');
+INSERT INTO staff_address VALUES (10, 23, 'Belmont St', 'Warren', 35789, 'West Virginia', 'United States of America');
+
+INSERT INTO staff_security_level VALUES (01, 01);
+INSERT INTO staff_security_level VALUES (01, 02);
+INSERT INTO staff_security_level VALUES (01, 03);
+INSERT INTO staff_security_level VALUES (02, 01);
+INSERT INTO staff_security_level VALUES (03, 01);
+INSERT INTO staff_security_level VALUES (03, 02);
+INSERT INTO staff_security_level VALUES (03, 03);
+INSERT INTO staff_security_level VALUES (03, 04);
+INSERT INTO staff_security_level VALUES (04, 01);
+INSERT INTO staff_security_level VALUES (04, 02);
+INSERT INTO staff_security_level VALUES (05, 01);
+INSERT INTO staff_security_level VALUES (05, 02);
+INSERT INTO staff_security_level VALUES (05, 03);
+INSERT INTO staff_security_level VALUES (05, 04);
+INSERT INTO staff_security_level VALUES (05, 05);
+INSERT INTO staff_security_level VALUES (06, 01);
+INSERT INTO staff_security_level VALUES (07, 01);
+INSERT INTO staff_security_level VALUES (07, 02);
+INSERT INTO staff_security_level VALUES (08, 01);
+INSERT INTO staff_security_level VALUES (08, 02);
+INSERT INTO staff_security_level VALUES (08, 02);
+INSERT INTO staff_security_level VALUES (08, 03);
+INSERT INTO staff_security_level VALUES (09, 01);
+INSERT INTO staff_security_level VALUES (09, 02);
+INSERT INTO staff_security_level VALUES (09, 03);
+INSERT INTO staff_security_level VALUES (09, 04);
+INSERT INTO staff_security_level VALUES (10, 01);
+
+INSERT INTO staff_staff_role VALUES (01,08);
+INSERT INTO staff_staff_role VALUES (02,01);
+INSERT INTO staff_staff_role VALUES (03,03);
+INSERT INTO staff_staff_role VALUES (04,02);
+INSERT INTO staff_staff_role VALUES (05,04);
+INSERT INTO staff_staff_role VALUES (06,08);
+INSERT INTO staff_staff_role VALUES (07,03);
+INSERT INTO staff_staff_role VALUES (08,04);
+INSERT INTO staff_staff_role VALUES (09,06);
+INSERT INTO staff_staff_role VALUES (10,07);
+
+INSERT INTO visitor VALUES (01, 'Aisha', 'Tamas', 'Giese', 'aisha.tamas@emailprovider.com', 19023797839);
+INSERT INTO visitor VALUES (02, 'Mathilde', 'Branimira', 'Hinrichs', 'mathildeh@emailprovider.com', 19273849203);
+INSERT INTO visitor VALUES (03, 'Chedomir', 'Rayhana', 'Morales', 'chedomir.morales@emailprovider.com', 18379903045);
+INSERT INTO visitor VALUES (04, 'Félicienne', 'Kenneth', 'Magro', 'fkm@emailprovider.com', 13982873243);
+INSERT INTO visitor VALUES (05, 'Albina', 'Golyat', 'MacShuibhne', 'albinagms@emailprovider.com', 19283745623);
+
+INSERT INTO item VALUES (01, 'Samothrace statue 10in', 195, 28, '10 inch resin statue replica of the Nike of Samothrace', 10);
+INSERT INTO item VALUES (02, 'Venus statue 10in', 145, 14, '10 inch resin statue replica of the Venus de Milo', 8);
+INSERT INTO item VALUES (03, 'Mona Lisa Pen', 9, 300, 'Pen with Mona Lisa design', 0.2);
+INSERT INTO item VALUES (04, 'Mona Lisa Keychain', 14, 200, 'Keychain with Mona Lisa design', 0.3);
+INSERT INTO item VALUES (05, 'Sculpture Kit', 45, 30, 'Clay sculpture kit', 2);
+
+INSERT INTO sale VALUES (01, 01, 06, 10);
+INSERT INTO sale VALUES (02, 02, 01, 210);
+INSERT INTO sale VALUES (03, 05, 06, 50);
+
+INSERT INTO sale_item VALUES (01, 03);
+INSERT INTO sale_item VALUES (02, 01);
+INSERT INTO sale_item VALUES (02, 03);
+INSERT INTO sale_item VALUES (03, 05);
+
+INSERT INTO visit VALUES (01, 01, 02, 10, TIMESTAMP '2021-12-05 16:18:45 -05:00', TIMESTAMP '2021-12-05 18:18:45 -05:00');
+INSERT INTO visit VALUES (02, 02, 01, 10, TIMESTAMP '2021-12-05 8:00:15 -05:00', TIMESTAMP '2021-12-05 20:00:00 -05:00');
+INSERT INTO visit VALUES (03, 03, 01, 10, TIMESTAMP '2021-12-05 9:12:23 -05:00', TIMESTAMP '2021-12-05 14:10:02 -05:00');
+INSERT INTO visit VALUES (04, 04, 03, 10, TIMESTAMP '2021-12-05 13:22:12 -05:00', TIMESTAMP '2021-12-05 16:02:10 -05:00');
+
+INSERT INTO collection_item_movement_log VALUES (01, TIMESTAMP '2021-12-05 5:00:00 -05:00', 02, 05, 04, 02);
+INSERT INTO collection_item_movement_log VALUES (02, TIMESTAMP '2021-12-05 5:30:00 -05:00', 02, 05, 02, 03);
+INSERT INTO collection_item_movement_log VALUES (03, TIMESTAMP '2021-12-05 5:45:00 -05:00', 01, 05, 01, 02);
+
+

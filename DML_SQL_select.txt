@@ -1,0 +1,44 @@
+SELECT * FROM item_material;
+SELECT * FROM item_artist;
+SELECT * FROM collection_item;
+SELECT * FROM item_category;
+SELECT * FROM collection_item_movement_log;
+SELECT * FROM security_level;
+SELECT * FROM staff;
+SELECT * FROM sale;
+SELECT * FROM item;
+SELECT * FROM visitor;
+SELECT * FROM visit;
+SELECT * FROM ticket;
+SELECT * FROM staff_address;
+
+-- All artworks with artist name, even if there's no linked artist
+SELECT collection_item.item_name, item_artist.first_name, item_artist.last_name, collection_item.description
+    FROM collection_item LEFT JOIN item_artist_collection_item
+    ON collection_item.item_id = item_artist_collection_item.item_id
+    LEFT JOIN item_artist 
+    ON item_artist.artist_id = item_artist_collection_item.item_id;
+
+-- Staff members info with description of role
+SELECT staff.first_name, staff.last_name, staff.email, staff_role.staff_role_description
+    FROM staff LEFT JOIN staff_staff_role
+    ON staff.staff_id = staff_staff_role.staff_id
+    LEFT JOIN staff_role
+    ON staff_staff_role.staff_role_id = staff_role.staff_role_id;
+    
+-- Collection Items with a security level id 4 or 5 with artist info
+SELECT collection_item.security_level_id, collection_item.item_name, item_artist.first_name, item_artist.last_name, collection_item.description
+    FROM collection_item LEFT JOIN item_artist_collection_item
+    ON collection_item.item_id = item_artist_collection_item.item_id
+    LEFT JOIN item_artist 
+    ON item_artist.artist_id = item_artist_collection_item.item_id
+    WHERE collection_item.security_level_id IN (4,5);
+
+
+-- All collection items in marble (id 1)
+SELECT collection_item.item_name, collection_item.description
+    FROM collection_item LEFT JOIN item_material_collection_item
+    ON collection_item.item_id = item_material_collection_item.item_id
+    LEFT JOIN item_material
+    ON item_material.material_id = item_material_collection_item.material_id
+    WHERE item_material.material_id = 1;   
